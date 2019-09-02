@@ -14,7 +14,7 @@ spring:
     gateway:
       routes:
         - id: product
-          uri: http://localhost:8081
+          uri: http://localhost:8085
           predicates:
             - Path=/product/**
         - id: order
@@ -22,17 +22,21 @@ spring:
           predicates:
             - Path=/order/**
         - id: delivery
-          uri: http://localhost:8083
+          uri: http://localhost:8082
           predicates:
             - Path=/deliverys/**
         - id: marketing
-          uri: http://localhost:8084
+          uri: http://localhost:8083
           predicates:
             - Path=/serveys/**
         - id: servicecenter
-          uri: http://localhost:8081
+          uri: http://localhost:8084
           predicates:
             - Path=/customers/**
+        - id: mypage
+          uri: http://localhost:8086
+          predicates:
+            - Path=/mypage/**
       globalcors:
         corsConfigurations:
           '[/**]':
