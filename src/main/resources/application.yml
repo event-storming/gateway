@@ -36,7 +36,7 @@ spring:
         - id: mypage
           uri: http://localhost:8086
           predicates:
-            - Path=/mypage/**
+            - Path=/users/**,/mypage/**
         - id: oauth
           uri: http://localhost:8090
           predicates:
