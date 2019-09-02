@@ -37,6 +37,10 @@ spring:
           uri: http://localhost:8086
           predicates:
             - Path=/mypage/**
+        - id: oauth
+          uri: http://localhost:8090
+          predicates:
+            - Path=/oauth/**
       globalcors:
         corsConfigurations:
           '[/**]':
