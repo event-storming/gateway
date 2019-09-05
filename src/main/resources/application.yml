@@ -17,6 +17,10 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/products/**
+        - id: goods
+          uri: http://localhost:8085
+          predicates:
+            - Path=/goods/**
         - id: order
           uri: http://localhost:8081
           predicates:
