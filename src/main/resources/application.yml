@@ -17,7 +17,7 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/products/**
-        - id: goods
+        - id: goodsㄹ
           uri: http://localhost:8085
           predicates:
             - Path=/goods/**
@@ -36,7 +36,7 @@ spring:
         - id: servicecenter
           uri: http://localhost:8084
           predicates:
-            - Path=/customers/**
+            - Path=/serveys/**
         - id: mypage
           uri: http://localhost:8086
           predicates:
