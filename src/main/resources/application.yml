@@ -28,7 +28,7 @@ spring:
         - id: delivery
           uri: http://localhost:8082
           predicates:
-            - Path=/deliverys/**
+            - Path=/deliveryies/**
         - id: marketing
           uri: http://localhost:8083
           predicates:
