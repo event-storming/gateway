@@ -5,20 +5,20 @@ server:
 ---
 spring:
   profiles: default
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          jwk-set-uri: http://localhost:8080/.well-known/jwks.json
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/.well-known/jwks.json
   cloud:
     gateway:
       routes:
         - id: product
           uri: http://localhost:8085
           predicates:
-            - Path=/products/**
-        - id: goodsㄹ
-          uri: http://localhost:8085
+            - Path=/product/**
+        - id: goods
+          uri: http://product:8085
           predicates:
             - Path=/goods/**
         - id: order
@@ -66,15 +66,19 @@ spring:
         - id: product
           uri: http://product:8080
           predicates:
-            - Path=/product/**
+            - Path=/products/**
+        - id: goods
+          uri: http://product:8080
+          predicates:
+            - Path=/goods/**
         - id: order
           uri: http://order:8080
           predicates:
-            - Path=/order/**
+            - Path=/orders/**
         - id: delivery
           uri: http://delivery:8080
           predicates:
-            - Path=/deliveries/**
+            - Path=/deliveryies/**
         - id: marketing
           uri: http://marketing:8080
           predicates:
@@ -82,7 +86,15 @@ spring:
         - id: servicecenter
           uri: http://servicecenter:8080
           predicates:
-            - Path=/customers/**
+            - Path=/serveys/**
+        - id: mypage
+          uri: http://mypage:8080
+          predicates:
+            - Path=/users/**,/mypage/**
+        - id: oauth
+          uri: http://oauth:8080
+          predicates:
+            - Path=/oauth/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -93,5 +105,6 @@ spring:
             allowedHeaders:
               - "*"
             allowCredentials: true
+
 server:
   port: 8080
