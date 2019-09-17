@@ -1,4 +1,5 @@
 package com.example.template;
+import org.springframework.cloud.gateway.config.GlobalCorsProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -6,6 +7,8 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import java.security.KeyPair;
 
@@ -20,7 +23,7 @@ public class ResourceServerConfiguration {
                 .cors().and()
                 .csrf().disable()
                 .authorizeExchange()
-                .pathMatchers("/oauth/**","/login/**","/.well-known/jwks.json").permitAll()
+                .pathMatchers("/goods/**","/oauth/**","/login/**","/.well-known/jwks.json").permitAll()
                 .anyExchange().authenticated()
                 .and()
                 .oauth2ResourceServer()
@@ -29,6 +32,15 @@ public class ResourceServerConfiguration {
 
         return http.build();
     }
+
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource(
+//            GlobalCorsProperties globalCorsProperties) {
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        globalCorsProperties.getCorsConfigurations()
+//                .forEach(source::registerCorsConfiguration);
+//        return source;
+//    }
 
     @Bean
     public KeyPair makeKeyPair(){

@@ -9,18 +9,14 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/.well-known/jwks.json
+          jwk-set-uri: http://localhost:8088/.well-known/jwks.json
   cloud:
     gateway:
       routes:
         - id: product
           uri: http://localhost:8085
           predicates:
-            - Path=/product/**
-        - id: goods
-          uri: http://product:8085
-          predicates:
-            - Path=/goods/**
+            - Path=/products/**,/goods/**
         - id: order
           uri: http://localhost:8081
           predicates:
@@ -71,11 +67,7 @@ spring:
         - id: product
           uri: http://product:8080
           predicates:
-            - Path=/products/**
-        - id: goods
-          uri: http://product:8080
-          predicates:
-            - Path=/goods/**
+            - Path=/products/**,/goods/**
         - id: order
           uri: http://order:8080
           predicates:
