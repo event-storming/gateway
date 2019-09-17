@@ -33,14 +33,14 @@ public class ResourceServerConfiguration {
         return http.build();
     }
 
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource(
-//            GlobalCorsProperties globalCorsProperties) {
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        globalCorsProperties.getCorsConfigurations()
-//                .forEach(source::registerCorsConfiguration);
-//        return source;
-//    }
+    @Bean
+    CorsConfigurationSource corsConfigurationSource(
+            GlobalCorsProperties globalCorsProperties) {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        globalCorsProperties.getCorsConfigurations()
+                .forEach(source::registerCorsConfiguration);
+        return source;
+    }
 
     @Bean
     public KeyPair makeKeyPair(){
