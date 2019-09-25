@@ -71,7 +71,7 @@ spring:
         - id: delivery
           uri: http://delivery:8080
           predicates:
-            - Path=/deliveryies/**
+            - Path=/deliveries/**
         - id: servicecenter
           uri: http://servicecenter:8080
           predicates:
