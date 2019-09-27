@@ -24,7 +24,7 @@ spring:
         - id: delivery
           uri: http://localhost:8082
           predicates:
-            - Path=/deliveryies/**
+            - Path=/deliveries/**
         - id: servicecenter
           uri: http://localhost:8084
           predicates:
