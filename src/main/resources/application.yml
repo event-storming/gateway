@@ -28,7 +28,7 @@ spring:
         - id: servicecenter
           uri: http://localhost:8084
           predicates:
-            - Path=/serveys/**
+            - Path=/surveys/**
         - id: mypage
           uri: http://localhost:8086
           predicates:
@@ -75,7 +75,7 @@ spring:
         - id: servicecenter
           uri: http://servicecenter:8080
           predicates:
-            - Path=/serveys/**
+            - Path=/surveys/**
         - id: mypage
           uri: http://mypage:8080
           predicates:
