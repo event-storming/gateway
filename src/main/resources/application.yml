@@ -9,7 +9,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8088/.well-known/jwks.json
+          jwk-set-uri: http://localhost:8090/.well-known/jwks.json
   cloud:
     gateway:
       routes:
@@ -56,7 +56,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/.well-known/jwks.json
+          jwk-set-uri: http://oauth:8080/.well-known/jwks.json
   cloud:
     gateway:
       routes:
