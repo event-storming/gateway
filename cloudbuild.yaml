@@ -26,56 +26,13 @@ steps:
         docker push gcr.io/$PROJECT_ID/$_PROJECT_NAME:$COMMIT_SHA
   ### deploy
   - id: 'deploy'
-    name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
+    name: "gcr.io/cloud-builders/gke-deploy"
     args:
-      - '-c'
-      - |
-        PROJECT=$$(gcloud config get-value core/project)
-        gcloud container clusters get-credentials "$${CLOUDSDK_CONTAINER_CLUSTER}" \
-          --project "$${PROJECT}" \
-          --zone "$${CLOUDSDK_COMPUTE_ZONE}"
-
-        cat <<EOF | kubectl apply -f -
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: $_PROJECT_NAME
-          labels:
-            app: $_PROJECT_NAME
-        spec:
-          ports:
-            - port: 8080
-              targetPort: 8080
-          selector:
-            app: $_PROJECT_NAME
-          type:
-              LoadBalancer
-        EOF
-
-        cat <<EOF | kubectl apply -f -
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: $_PROJECT_NAME
-          labels:
-            app: $_PROJECT_NAME
-        spec:
-          replicas: 1
-          selector:
-            matchLabels:
-              app: $_PROJECT_NAME
-          template:
-            metadata:
-              labels:
-                app: $_PROJECT_NAME
-            spec:
-              containers:
-                - name: $_PROJECT_NAME
-                  image: gcr.io/$PROJECT_ID/$_PROJECT_NAME:$COMMIT_SHA
-                  ports:
-                    - containerPort: 8080
-        EOF
+    - run
+    - --filename=deployment.yaml
+    - --image=gcr.io/$PROJECT_ID/$_PROJECT_NAME:$COMMIT_SHA
+    - --location=asia-northeast1-a
+    - --cluster=cluster-1  
 substitutions:
     _PROJECT_NAME: gateway
 options:
