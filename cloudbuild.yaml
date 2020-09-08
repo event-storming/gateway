@@ -29,7 +29,7 @@ steps:
     name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=deployment.yaml
+    - --filename=kubernetes/deployment.yaml
     - --image=gcr.io/$PROJECT_ID/$_PROJECT_NAME:$COMMIT_SHA
     - --location=asia-northeast1-a
     - --cluster=cluster-1  
